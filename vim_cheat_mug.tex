@@ -1,9 +1,9 @@
 % !TeX program = xelatex
 \documentclass{article}
-\usepackage[paperwidth=210mm,paperheight=96mm,vmargin=5mm,hmargin=5mm]{geometry}
+\usepackage[paperwidth=210mm,paperheight=96mm,vmargin=5mm,hmargin=2mm]{geometry}
 \usepackage{multicol}
 \usepackage{listings}
-\usepackage{sourcecodepro}
+\usepackage[light,semibold]{sourcecodepro}
 
 \pagestyle{empty}
 \parindent=0pt
@@ -16,131 +16,131 @@
 }
 
 \begin{document}
-\setlength{\columnsep}{10mm}
+\setlength{\columnsep}{7mm}
 \begin{multicols}{4}
 \begin{lstlisting}
 §Motion§
-:n nG  goto line n
-gg G   first/last line
-0 ^ $  start/fst word/end of line
-w W    start of next word
-e E    end of word (alnum/ws)
-b B    start of word
-ge gE  end of prev word
-fx     to next occ of x
-tx     before next occ of x
-Fx     to prev occ of x
-Tx     after prev occ of x
-; ,    repeat last ftFT fwd/back
-{ }    next/prev paragraph
-* #    next/prev word under crsr
-`a 'a  crsr/line mark a
-`` ''  back to crsr/line jmp src
-C-i/o  fwd back jump stack
-zz zt zb  crsr center/top/bot
+:n nG   goto line n
+gg G    first/last line
+h j k l left/down/up/right
+0 ^ $   start/fst word/end of line
+w W     start of next word
+e E     end of word (alnum/ws)
+b B     start of word
+ge gE   end of prev word
+fx      to next occ of x
+tx      before next occ of x
+Fx      to prev occ of x
+Tx      after prev occ of x
+; ,     repeat last ftFT fwd/back
+{ }     next/prev paragraph
+* #     next/prev word under crsr
+`a 'a   crsr/line mark a
+`` ''   back to crsr/line jmp src
+C-i/o   fwd back jump stack
+zz/t/b  crsr center/top/bot
+H M L   move top/mid/bot screen
+O o     move to other corner
+        (diag) in visual mode
 
 §Edit§
-a A    append here/end of line
-i I    insert here/fst word
-o O    insert new line below/above
-s S    del char/line and insert
-C      del until end and insert
-rx     replace char with x
-x X    del and yank (before) char
-R      enter replace mode
-J      join line with next
-~      swap case of char
-p P    paste before/after
-u C-r  undo/redo changes
+a A     append here/end of line
+i I     insert here/fst word
+o O     insert new line below/abv
+s S     del char/line and insert
+C       del until end and insert
+rx      replace char with x
+x X     del and yank (before) chr
+R       enter replace mode
+J       join line with next
+~       swap case of char
+p P     paste before/after
+u C-r   undo/redo changes
 
 §Operators (Count Op Motion)§
-d dd   delete (line)
-y yy   yank (line)
-c cc   change (line)
-gq gw  format/reflow
-g~ gu gU swap case/lower/upper
-v V C-v  visual (line/blk) mode
-< > =  indent left/right/auto
-<< >>  indent line left/right
-!      filter thru ext prg
+d dd    delete (line)
+y yy    yank (line)
+c cc    change (line)
+gq gw   format/reflow
+g~/u/U  swap case/lower/upper
+< > =   indent left/right/auto
+<< >>   indent line left/right
+!       filter thru ext prg
+v V C-v visual (line/blk) mode
 
 §Text Objects (Count Op i/a Obj)§
-p      paragraph
-w W    word alnum/ws delim
-s      sentence
-[({<   block with bracket
-'"`    quoted string
-b B t  () {} <>
+p       paragraph
+w W     word alnum/ws delim
+s       sentence
+[({<    block with bracket
+'"`     quoted string
+b B t   () {} <>
 
 §Marks and Regs§
-ma    mark position as a
-"xy   yank to register x
-"Xy   append to register x
-"xp   paste from register x
-
+ma      mark position as a
+"xy     yank to register x
+"Xy     append to register x
+"xp     paste from register x
 §Registers§
-0      last yank
-"      last delete or yank
-* +    system clipboard
-.      last inserted text
+0       last yank
+"       last delete or yank
+* +     system clipboard
+.       last inserted text
 
 §Search & Replace§
-/ ?    search fwd/back
-n N    next/prev search match
-:% s/x/y/{gci} repl x with y
-       in file. g: all in line.
-       c: ask.i: case insensitive
+/ ?     search fwd/back
+n N     next/prev search match
+:% s/x/y/{gcin}
+   replace x with y in file
+   g: all in line. n: count occ
+   c: ask. i: case insensitive
 
 §Misc§
-%      nearest matching {([])}
-.      repeat last command
-gf     open file under crsr
-gv     reselect last visual
-C-a/x  inc/dec num under crsr
-qa q   start/finish rec macro a
-@a     exec macro a
-@@     exec last exec macro again
-C-p    complete word
-:e     open file in new buffer
-:tabe  open file in new tab
-:r     read file into curr buffer
-:wq ZZ save & quit (cmd mode)
-:q! ZQ quit without save
-C-r =  calculator (insert mode)
-C-w s/v  split window horiz/vert
-C-w h/j/k/l  move to window
-C-w q  close window
+%       nearest matching {([])}
+.       repeat last command
+C-p     complete word
+gv      reselect last visual
+C-a/x   inc/dec num under crsr
 
+qa q    start/finish rec macro a
+@a      exec macro a
+@@      exec last macro again
 
-§Spell Checking§
-]s [s  prev/next spell err
-z=     show spell suggestions
-zg     add word to spell dict
+gf      open file under crsr
+:e      open file in new buf
+:tabe   open file in new tab
+:r      read file into curr buf
+:wq ZZ  save & quit (cmd mode)
+:q! ZQ  quit without save
+
+gC-g    count chars/words/lines
+C-r =   calculator (insrt mode)
+
+C-w s/v split win horiz/vert
+C-w h/j/k/l  focus to window
+C-w q   close window
+
+]s [s   prev/next spell err
+z=      show spell suggestions
+zg      add word to spell dict
 
 §Examples§
-3x     remove next 3 chars
-dw     del to beg of next wrd
-2dd    del 2 lines
-cap    del paragraph and ins
-da)    delete everything
-       (incl) the innermost ()
-3cw    del next 3 words and
-       go to insert mode
-d'a    del from cur line to
-       line of mark a
-y`a    yank from crsr to pos
-       of mark a
-xp     swap chars at crsr
-gqap   format para to textwdth
-2"ayw  yank 2 words to reg a
-""p    paste the last deletion
-
-
-                  _
-           __   _(_)_ __ ___
-           \ \ / / | '_ ` _ \
-            \ V /| | | | | | |
-             \_/ |_|_| |_| |_|
+3x      remove next 3 chars
+dw      del to beg of next wrd
+2dd     del 2 lines
+cap     del paragraph and ins
+da)     delete everything
+        (incl) the innermost ()
+3cw     del next 3 words and
+        go to insert mode
+d'a     del from cur line to
+        line of mark a
+y`a     yank from crsr to pos
+        of mark a
+xp      swap chars at crsr
+gqap    format para to textwdth
+2"ayw   yank 2 words to reg a
+""p     paste the last deletion
 \end{lstlisting}
 \end{multicols}
 \end{document}
