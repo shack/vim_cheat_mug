@@ -81,6 +81,8 @@ ma      mark position as a
 "xy     yank to register x
 "Xy     append to register x
 "xp     paste from register x
+
+
 §Registers§
 0       last yank
 "       last delete or yank
@@ -90,10 +92,13 @@ ma      mark position as a
 §Search & Replace§
 / ?     search fwd/back
 n N     next/prev search match
-:% s/x/y/{gcin}
-   replace x with y in file
+:% s/pat/y/{gcin}
+   replace pat with y in file
    g: all in line. n: count occ
    c: ask. i: case insensitive
+:g{!}/pat/d
+   delete all lines {not}
+   matching pat
 
 §Misc§
 %       nearest matching {([])}
