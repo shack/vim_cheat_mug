@@ -24,6 +24,7 @@
 gg G    first/last line
 h j k l left/down/up/right
 0 ^ $   start/fst word/end of line
+g_      last non-ws char of line
 w W     start of next word
 e E     end of word (alnum/ws)
 b B     start of word
@@ -40,6 +41,7 @@ Tx      after prev occ of x
 C-i/o   fwd back jump stack
 zz/t/b  crsr center/top/bot
 H M L   move top/mid/bot screen
+C-d/u   half page down/up
 O o     move to other corner
         (diag) in visual mode
 
@@ -81,8 +83,6 @@ ma      mark position as a
 "xy     yank to register x
 "Xy     append to register x
 "xp     paste from register x
-
-
 §Registers§
 0 "     last (delete or) yank
 * +     system clipboard
@@ -91,6 +91,7 @@ ma      mark position as a
 §Search & Replace§
 / ?     search fwd/back
 n N     next/prev search match
+
 :% s/pat/y/{gcin}
    replace pat with y in file
    g: all in line. n: just count
@@ -105,6 +106,7 @@ n N     next/prev search match
 C-p     complete word
 gv      reselect last visual
 C-a/x   inc/dec num under crsr
+gd      goto def of word u/ crsr
 
 qa q    start/finish rec macro a
 @a      exec macro a
