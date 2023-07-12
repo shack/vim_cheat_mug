@@ -24,7 +24,6 @@
 gg G    first/last line
 h j k l left/down/up/right
 0 ^ $   start/fst word/end of line
-g_      last non-ws char of line
 w W     start of next word
 e E     end of word (alnum/ws)
 b B     start of word
@@ -38,6 +37,7 @@ Tx      after prev occ of x
 * #     next/prev word under crsr
 `a 'a   crsr/line mark a
 `` ''   back to crsr/line jmp src
+`.      back to last change
 C-i/o   fwd back jump stack
 zz/t/b  crsr center/top/bot
 H M L   move top/mid/bot screen
@@ -76,7 +76,7 @@ w W     word alnum/ws delim
 s       sentence
 [({<    block with bracket
 '"`     quoted string
-b B t   () {} <>
+b B t   () {} XML tag block
 
 §Marks and Regs§
 ma      mark position as a
@@ -103,18 +103,18 @@ n N     next/prev search match
 §Misc§
 %       nearest matching {([])}
 .       repeat last command
-C-p     complete word
+C-n/p   complete next/prev word
 gv      reselect last visual
 C-a/x   inc/dec num under crsr
-gd      goto def of word u/ crsr
+gd C-t  goto def / back
 ga      ascii val of char u/ crsr
 gC-g    count chars/words/lines
 C-r =   calculator (insrt mode)
+zc/o/a  fold close/open/toggle
 
 qa q    start/finish rec macro a
 @a      exec macro a
 @@      exec last macro again
-
 gf      open file under crsr
 :e      open file in new buf
 :tabe   open file in new tab
@@ -127,7 +127,7 @@ C-w h/j/k/l  focus to window
 C-w q   close window
 
 ]s [s   prev/next spell err
-z=      show spell suggestions
+z=      spell suggestions
 zg      add word to spell dict
 
 §Examples§
