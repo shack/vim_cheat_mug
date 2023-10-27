@@ -59,7 +59,7 @@ J       join line with next
 p P     paste before/after
 u C-r   undo/redo changes
 
-§Operators (Count Op Motion)§
+§Operators§ (# §Op§ §Motion§)
 d dd    delete (line)
 y yy    yank (line)
 c cc    change (line)
@@ -70,7 +70,7 @@ g~/u/U  swap case/lower/upper
 !       filter thru ext prg
 v V C-v visual (line/blk) mode
 
-§Text Objects (Count Op i/a Obj)§
+§Text Objects§ (# §Op§ i/a §Obj§)
 p       paragraph
 w W     word alnum/ws delim
 s       sentence
@@ -110,7 +110,7 @@ gd C-t  goto def / back
 ga      ascii val of char u/ crsr
 gC-g    count chars/words/lines
 C-r =   calculator (insrt mode)
-zc/o/a  fold close/open/toggle
+C-a     last ins text (insrt mode)
 
 qa q    start/finish rec macro a
 @a      exec macro a
@@ -126,6 +126,7 @@ C-w s/v split win horiz/vert
 C-w h/j/k/l  focus to window
 C-w q   close window
 
+zc/o/a  fold close/open/toggle
 ]s [s   prev/next spell err
 z=      spell suggestions
 zg      add word to spell dict
@@ -139,8 +140,6 @@ da)     del everything
         (incl) the innermost ()
 3cw     del next 3 words and
         go to insert mode
-d'a     del from cur line to
-        line of mark a
 y`a     yank from crsr to pos
         of mark a
 xp      swap chars at crsr
