@@ -21,8 +21,6 @@
 \begin{multicols}{4}
 \begin{lstlisting}
 §Motion§
-:n nG   goto line n
-gg G    first/last line
 h j k l left/down/up/right
 0 ^ $   start/fst word/end of line
 w W     start of next word
@@ -151,8 +149,6 @@ da)     del everything
         go to insert mode
 y`a     yank from crsr to pos
         of mark a
-xp      swap chars at crsr
-gqap    format para to textwdth
 2"ayw   yank 2 words to reg a
 ""p     paste the last deletion
 xp      swap chars at crsr
