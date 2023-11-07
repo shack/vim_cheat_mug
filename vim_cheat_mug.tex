@@ -82,21 +82,21 @@ s       sentence
 b B t   () {} XML tag block
 
 §Marks and Regs§
-ma      mark position as a
-"xy     yank to register x
-"Xy     append to register x
-"xp     paste from register x
+m¶a¶      mark position as ¶a¶
+"¶x¶y     yank to register ¶x¶
+"¶X¶y     append to register ¶x¶
+"¶x¶p     paste from register ¶x¶
 \end{lstlisting}
 \begin{lstlisting}
 §Registers§
-0 "     last yank (or delete)
+0 "     last yank/yank or delete
+¶n¶       ¶n¶th-last delete (1-9)
 * +     system clipboard
 .       last inserted text
 
 §Search & Replace§
 / ?     search fwd/back
 n N     next/prev search match
-
 :% s/¶pat¶/¶rpl¶/{gcin}
    replace ¶pat¶ with ¶rpl¶ in file
    g: all in line. n: just count
@@ -111,7 +111,7 @@ n N     next/prev search match
 C-n/p   complete next/prev word
 gv      reselect last visual
 C-a/x   inc/dec num under crsr
-gd C-t  goto def / back
+C-]/t   goto def / back
 ga      ascii val of char u/ crsr
 gC-g    count chars/words/lines
 C-r =   calculator (insrt mode)
@@ -147,6 +147,7 @@ da)     del everything
         (incl) the innermost ()
 3cw     del next 3 words and
         go to insert mode
+d}      del until end of para
 y`a     yank from crsr to pos
         of mark a
 2"ayw   yank 2 words to reg a
