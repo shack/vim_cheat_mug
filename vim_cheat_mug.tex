@@ -67,6 +67,7 @@ d dd    delete (line)
 y yy    yank (line)
 c cc    change (line)
 gq gw   format/reflow
+gc gcc  (un-)comment (line)
 g~/u/U  swap case/lower/upper
 < > =   indent left/right/auto
 << >>   indent line left/right
@@ -77,11 +78,10 @@ v V C-v visual (line/blk) mode
 p       paragraph
 w W     word alnum/ws delim
 s       sentence
-[({<    block with bracket
-'"`     quoted string
+[({<'"` text enclosed by
 b B t   () {} XML tag block
 
-§Marks and Regs§
+§Marks and Registers§
 m¶a¶      mark position as ¶a¶
 "¶x¶y     yank to register ¶x¶
 "¶X¶y     append to register ¶x¶
