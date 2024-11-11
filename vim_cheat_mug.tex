@@ -27,10 +27,8 @@ w W     start of next word
 e E     end of word (alnum/ws)
 b B     start of word
 ge gE   end of prev word
-f¶x¶      to next occ of ¶x¶
-t¶x¶      before next occ of ¶x¶
-F¶x¶      to prev occ of ¶x¶
-T¶x¶      after prev occ of ¶x¶
+f¶x¶/t¶x¶   to/before next occ of ¶x¶
+F¶x¶/T¶x¶   to/behind prev occ of ¶x¶
 :¶n¶ ¶n¶G   goto line ¶n¶
 gg G    first/last line
 ; ,     repeat last ftFT fwd/back
@@ -40,11 +38,13 @@ gg G    first/last line
 `` ''   back to crsr/line jmp src
 `.      back to last change
 g; g,   back/fwd to last change
+gi      last change and insert
 C-i/o   fwd back jump stack
 zz/t/b  crsr center/top/bot
 H M L   mv top/mid/bot screen
 C-d/u   half page down/up
-O o     mv to other corner (visual)
+/ ?     search fwd/back
+n N     next/prev search match
 
 §Edit§
 a A     append here/end of line
@@ -54,8 +54,8 @@ s S     del char/line and insert
 C       del until end and insert
 \end{lstlisting}
 \begin{lstlisting}
-r¶x¶      replace char with ¶x¶
 x X     del and yank (before) chr
+r¶x¶      replace char with ¶x¶
 R       enter replace mode
 J       join line with next
 ~       swap case of char
@@ -92,11 +92,10 @@ m¶a¶      mark position as ¶a¶
 0 "     last yank/yank or delete
 ¶n¶       ¶n¶th-last delete (1-9)
 * +     system clipboard
+-       last small delete
 .       last inserted text
 
-§Search & Replace§
-/ ?     search fwd/back
-n N     next/prev search match
+§Substitute§
 :% s/¶pat¶/¶rpl¶/{gcin}
    replace ¶pat¶ with ¶rpl¶ in file
    g: all in line. n: just count
@@ -115,19 +114,21 @@ C-]/t   goto def / back
 ga      ascii val of char u/ crsr
 gC-g    count chars/words/lines
 C-r =   calculator (insrt mode)
+C-k ¶XY¶  Enter digraph ¶XY¶ (e.g. ->)
 C-a     last ins text (insrt mode)
+
+gf      open file under crsr
+:e      open file in new buf
+:tabe   open file in new tab
+\end{lstlisting}
+\begin{lstlisting}
+:r      read file into curr buf
+:wq ZZ  save & quit (cmd mode)
+:q! ZQ  quit without save
 
 q¶a¶ q    start/finish rec macro ¶a¶
 @¶a¶      exec macro ¶a¶
 @@      exec last macro again
-\end{lstlisting}
-\begin{lstlisting}
-gf      open file under crsr
-:e      open file in new buf
-:tabe   open file in new tab
-:r      read file into curr buf
-:wq ZZ  save & quit (cmd mode)
-:q! ZQ  quit without save
 
 C-w s/v split win horiz/vert
 C-w h/j/k/l  focus to window
@@ -140,13 +141,12 @@ zg      add word to spell dict
 
 §Examples§
 3x      del next 3 chars
-dw      del to beg of next wrd
+de      del to end of curr wrd
 2dd     del 2 lines
 cip     del paragraph and ins
 da)     del everything
         (incl) the innermost ()
-3cw     del next 3 words and
-        go to insert mode
+3cw     del next 3 words & insrt
 d}      del until end of para
 y`a     yank from crsr to pos
         of mark a
