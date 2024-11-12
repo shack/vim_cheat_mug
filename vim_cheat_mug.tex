@@ -113,17 +113,18 @@ C-a/x   inc/dec num under crsr
 C-]/t   goto def / back
 ga      ascii val of char u/ crsr
 gC-g    count chars/words/lines
-C-r =   calculator (insrt mode)
-C-k ¶XY¶  Enter digraph ¶XY¶ (e.g. ->)
-C-a     last ins text (insrt mode)
+C-r =   calculator (imode)
+C-a     last ins text (imode)
+C-k ¶XY¶  Enter digraph ¶XY¶ (imode)
+C-v ¶key¶ Enter special ¶key¶ (imode)
 
 gf      open file under crsr
 :e      open file in new buf
-:tabe   open file in new tab
 \end{lstlisting}
 \begin{lstlisting}
+:tabe   open file in new tab
 :r      read file into curr buf
-:wq ZZ  save & quit (cmd mode)
+:wq ZZ  save & quit
 :q! ZQ  quit without save
 
 q¶a¶ q    start/finish rec macro ¶a¶
@@ -146,14 +147,13 @@ de      del to end of curr wrd
 cip     del paragraph and ins
 da)     del everything
         (incl) the innermost ()
-3cw     del next 3 words & insrt
 d}      del until end of para
 y`a     yank from crsr to pos
         of mark a
 2"ayw   yank 2 words to reg a
-""p     paste the last deletion
+"-p     paste the last deletion
 xp      swap chars at crsr
-gqap    format para to textwdth
+gqap    format para to textwidth
 \end{lstlisting}
 \end{multicols}
 \end{document}
